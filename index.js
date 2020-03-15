@@ -2,6 +2,7 @@
 var pg = require('pg');
 var nbbRequire = require('nodebb-plugin-require');
 var utils = nbbRequire('public/src/utils');
+var pool = new pg.Pool()
 
 (function(Exporter) {
 	var _table_prefix;
@@ -63,7 +64,7 @@ var utils = nbbRequire('public/src/utils');
 	};
 
 	Exporter.getPaginatedGroups = function(start, limit, callback) {
-		pg.connect(_url, function(err, client, done) {
+		pool.connect(_url, function(err, client, done) {
 			if (err) {
 				return callback(err);
 			}
@@ -102,7 +103,7 @@ var utils = nbbRequire('public/src/utils');
 	};
 
 	Exporter.getPaginatedUsers = function(start, limit, callback) {
-		pg.connect(_url, function(err, client, done) {
+		pool.connect(_url, function(err, client, done) {
 			if (err) {
 				return callback(err);
 			}
@@ -184,7 +185,7 @@ var utils = nbbRequire('public/src/utils');
 	}
 
 	Exporter.getPaginatedRooms = function(start, limit, callback) {
-		pg.connect(_url, function(err, client, done) {
+		pool.connect(_url, function(err, client, done) {
 			if (err) {
 				return callback(err);
 			}
@@ -232,7 +233,7 @@ var utils = nbbRequire('public/src/utils');
 	}
 
 	Exporter.getPaginatedMessages = function(start, limit, callback) {
-		pg.connect(_url, function(err, client, done) {
+		pool.connect(_url, function(err, client, done) {
 			if (err) {
 				return callback(err);
 			}
@@ -260,7 +261,7 @@ var utils = nbbRequire('public/src/utils');
 	};
 
 	Exporter.getPaginatedCategories = function(start, limit, callback) {
-		pg.connect(_url, function(err, client, done) {
+		pool.connect(_url, function(err, client, done) {
 			if (err) {
 				return callback(err);
 			}
@@ -303,7 +304,7 @@ var utils = nbbRequire('public/src/utils');
 	};
 
 	Exporter.getPaginatedTopics = function(start, limit, callback) {
-		pg.connect(_url, function(err, client, done) {
+		pool.connect(_url, function(err, client, done) {
 			if (err) {
 				return callback(err);
 			}
@@ -358,7 +359,7 @@ var utils = nbbRequire('public/src/utils');
 	};
 
 	Exporter.getPaginatedPosts = function(start, limit, callback) {
-		pg.connect(_url, function(err, client, done) {
+		pool.connect(_url, function(err, client, done) {
 			if (err) {
 				return callback(err);
 			}
@@ -408,7 +409,7 @@ var utils = nbbRequire('public/src/utils');
 	};
 
 	Exporter.getPaginatedVotes = function(start, limit, callback) {
-		pg.connect(_url, function(err, client, done) {
+		pool.connect(_url, function(err, client, done) {
 			if (err) {
 				return callback(err);
 			}
@@ -457,7 +458,7 @@ var utils = nbbRequire('public/src/utils');
 	};
 
 	Exporter.getPaginatedBookmarks = function(start, limit, callback) {
-		pg.connect(_url, function(err, client, done) {
+		pool.connect(_url, function(err, client, done) {
 			if (err) {
 				return callback(err);
 			}
@@ -494,7 +495,7 @@ var utils = nbbRequire('public/src/utils');
 	};
 
 	Exporter.getPaginatedFavourites = function(start, limit, callback) {
-		pg.connect(_url, function(err, client, done) {
+		pool.connect(_url, function(err, client, done) {
 			if (err) {
 				return callback(err);
 			}
